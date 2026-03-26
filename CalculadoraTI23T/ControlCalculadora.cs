@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Pipes;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,8 +42,17 @@ namespace CalculadoraTI23T
                 "10. Entre 100 e 200\n"+
                 "11. Verificar se pode votar\n"+
                 "12. Verificar se esta dentro de um intervalo\n"+
-                "13. Leia um número e verifique se ele esta entre os 10 maiores lidos";
-
+                "13. Verifique oque é o triangulo\n"+
+                "14. Leia um número de 1 a 7 e diga o dia da semana\n"+
+                "15. Verifique se a senha digital é válida\n"+
+                "16. Leia dois horarios e diga qual o maior\n"+
+                "17. Leia dois numero e diga o maior\n"+
+                "18. Leia 5 numeros e calcule a média\n"+
+                "19. Leia numeros ate que a soma ultrapasse 100\n"+
+                "20. Solicite senhas ate que a valida senha informada\n"+
+                "21. Leia 10 numeros e exiba o maior e o menor\n"+
+                "22. Leia uma idade e diga se é criança, adolescente, adulto ou idoso";
+                
         }//fim do metodo
 
         public void realizarOperacao() 
@@ -52,7 +62,8 @@ namespace CalculadoraTI23T
             {
                 Console.WriteLine(this.mostrarMenu());//chamar menu
                 opcao = Convert.ToInt32(Console.ReadLine());//leia
-                if (opcao != 0 && opcao !=6 && opcao !=7 && opcao !=8 && opcao !=9 && opcao != 10 && opcao !=11 && opcao !=12 && opcao !=13) 
+                if (opcao != 0 && opcao !=6 && opcao !=7 && opcao !=8 && opcao !=9 && opcao != 10 && opcao !=11 && opcao !=12 && opcao !=13 && opcao !=14 && opcao !=15 && opcao != 16
+                    && opcao != 17 && opcao != 18 && opcao != 19 && opcao != 20 && opcao != 21 && opcao != 22 && opcao !=23) 
                 {
                     this.coletar();//pegar oque o usuario esta digitando
                 }
@@ -126,13 +137,85 @@ namespace CalculadoraTI23T
                             int intervaloFinal = Convert.ToInt32(Console.ReadLine());
 
                             Console.WriteLine(this.model.verificarIntervalo(intervalo, intervaloComeco, intervaloFinal));
-
                         break;
 
-                        //exercicio 14
+                        case 13:
+                            Console.WriteLine("Informe o valor do primeiro lado do triangulo: ");
+                            double lado1 = Convert.ToDouble(Console.ReadLine());
+
+                            Console.WriteLine("Informe o valor do segundo lado do triangulo: ");
+                            double lado2 = Convert.ToDouble(Console.ReadLine());
+
+                            Console.WriteLine("Informe o valor do terceiro lado do triangulo: ");
+                            double lado3 = Convert.ToDouble(Console.ReadLine());
+
+                            Console.WriteLine(this.model.triangulo(lado1, lado2, lado3));
+                        break;
+
                         case 14:
+                            Console.WriteLine("Informe um Valor de 1 a 7: ");
+                            int num1 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine(this.model.semana(num1));
+                        break;
+
+                        case 15:
+                            Console.WriteLine("Informe a senha: ");
+                            string senha1 = Console.ReadLine();
+                            Console.WriteLine("Informe a senha novamente: ");
+                            string senha2 = Console.ReadLine();
+                            Console.WriteLine(this.model.senha(senha1, senha2));
+                        break;
+
+                        case 16:
+                            Console.WriteLine("Informe o primeiro horario: ");
+                            DateTime horario1 = Convert.ToDateTime(Console.ReadLine());
+                            Console.WriteLine("Informe o segundo horario: ");
+                            DateTime horario2 = Convert.ToDateTime(Console.ReadLine());
+                            Console.WriteLine(this.model.horarios(horario1, horario2));
+                        break;
+
+                        case 17:
+                            Console.WriteLine("Informe um numero: ");
+                            double num11 = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Informe o segundo numero: ");
+                            double num22 = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine(this.model.numeros(num11, num22));
+                        break;
+
+                        case 18:
+                        Console.WriteLine("Informe o primeiro numero: ");
+                        double num01 = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Informe o segundo numero: ");
+                        double num02 = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Informe o terceiro numero: ");
+                        double num03 = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Informe o quarto numero: ");
+                        double num04 = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Informe o quinto numero: ");
+                        double num05 = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine(this.model.media(num01, num02, num03, num04, num05));
+                        break;
+
+                        case 19:
+                            Console.WriteLine("Informe um numero: ");
+                            double num011 = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine(this.model.numerosAteCem(num011));
+                        break;
+
+                        case 20:
+                           this.model.senhas("", "");
+                        break;
+
+                        case 21:
                             Console.WriteLine(this.model.definirMaiorMenor());
                         break;
+
+                        case 22:
+                            Console.WriteLine("Informe uma idade: ");
+                            int idade1 = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine(this.model.idade(idade1));
+                        break;
+
                             default:
                                 Console.WriteLine("Informe um valor correto!!");
                             break;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Configuration;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -173,7 +174,130 @@ namespace CalculadoraTI23T
             }
         }
 
-        //exercicio 14:
+        public string triangulo(double lado1, double lado2, double lado3) 
+        {
+            if (lado1 == lado2 && lado2 == lado3)
+            {
+                return $"O triângulo é equilatero";
+            }
+            if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) 
+            {
+                return $"O triângulo é isosceles";
+            }
+            if (lado1 + lado2 > lado3 && lado1 + lado3 > lado2 && lado2 + lado3 > lado1) 
+            {
+                return $"O triângulo é escaleno";
+            }
+            return "Os valores nao forma um triangulo";
+        }
+
+        public string semana(int num1) 
+        {
+            if(num1 == 1)
+            {
+                return $"O dia da semana é segunda";
+            }
+            if(num1 == 2)
+            {
+                return $"O dia é terça";
+            }
+            if(num1 == 3) 
+            {
+                return $"O dia é quarta";
+            }
+            if(num1 == 4) 
+            {
+                return $"O dia é quinta";
+            }
+            if(num1 == 5) 
+            {
+                return $"O dia da semana é sexta";
+            }
+            if (num1 == 6) 
+            {
+                return $"O dia da semana é sabado";
+            }
+            if (num1 == 7) 
+            {
+                return $"O dia da semana é domingo";
+            }
+            return "Digite um número que esteja no intervalo de 1 a 7!";
+        }
+
+        public string senha(string senha1, string senha2) 
+        {
+            if (senha1 == senha2) 
+            {
+                return $"Essa é a senha válida!";
+            }
+            else 
+            {
+                return $"Essa não é a senha válida!";
+            }
+        }
+
+        public string horarios(DateTime horario1, DateTime horario2) 
+        {
+            if(horario1 > horario2) 
+            {
+                return $"O primeiro horario é o maior";
+            }
+            else 
+            {
+                return $"O segundo horario é maior";
+            }
+        }
+
+        public string numeros(double num11, double num22) 
+        {
+            if(num11 > num22) 
+            {
+                return $"O primeiro numero é maior";
+            }
+            else 
+            {
+                return $"O segundo numero é maior";
+            }
+        }
+
+        public double media(double num01, double num02, double num03, double num04, double num05) 
+        {
+            return (num01 + num02 + num03 + num04 + num05) / 5;
+
+        }
+
+        public double numerosAteCem(double num011)
+        {
+            double soma = 0;
+
+            for (int i = 0; soma <= 100; i++)
+            {
+                soma += num011;
+            }
+            return soma;
+        }
+
+        public void senhas(string senhaVerdade, string senhaFalsa)
+        {
+            do
+            {
+                Console.WriteLine("Informe a senha: ");
+                senhaVerdade = Console.ReadLine();
+
+                Console.WriteLine("Informe a senha novamente: ");
+                senhaFalsa = Console.ReadLine();
+
+                if(senhaFalsa != senhaVerdade) 
+                {
+                    Console.WriteLine("Essa não é a senha correta!");
+                }
+            }
+            while (senhaVerdade != senhaFalsa);
+              {
+                Console.WriteLine("Essa é a senha Correta");
+              }
+            
+        }
 
         public string definirMaiorMenor() 
         {
@@ -183,7 +307,7 @@ namespace CalculadoraTI23T
             for (int i = 0; i < 10; i++) 
             {
                 Console.WriteLine((i+1) + "° Número");
-                num1 = Convert.ToInt32(Console.ReadLine());
+                num = Convert.ToInt32(Console.ReadLine());
 
                 if(i == 0) 
                 {
@@ -200,6 +324,27 @@ namespace CalculadoraTI23T
                 }
             }
             return $" O maior é: {maior} e o menor é: {menor}";
+        }
+
+        public string idade(int idade1) 
+        {
+            if(idade1 < 13) 
+            {
+                return $"Com essa idade você é uma criança!";
+            }
+            if(idade1 > 13 && idade1 < 18) 
+            {
+                return $"Com essa idade você é um adolescente!";
+            }
+            if(idade1 > 18 && idade1 < 60) 
+            {
+                return $"Com essa idade você é um adulto!";
+            }
+            if(idade1 > 60) 
+            {
+                return $"Com essa idade você é um idoso";
+            }
+            return $"Digite um número valido!";
         }
 
     }//fim da classe model
